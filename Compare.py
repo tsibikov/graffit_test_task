@@ -20,3 +20,6 @@ class Compare:
             if self.minute != other.minute:
                 return self.minute > other.minute
             return self.second > other.second
+
+    def __eq__(self, other):
+        return self.time == other.time
