@@ -6,8 +6,8 @@ from Compare import Compare
 
 
 log = 'log.txt'
-logging.basicConfig(format = u'%(levelname)-8s [%(asctime)s] %(message)s',
-                    level = logging.INFO, filename=log)
+logging.basicConfig(format=u'%(levelname)-8s [%(asctime)s] %(message)s',
+                    level=logging.INFO, filename=log)
 
 
 class DailyLog:
@@ -29,16 +29,19 @@ class DailyLog:
         self.log = []
         self.sorted_log = []
 
-    def parse_json(self):
+    def load_json(self):
         """ Метод для получения логов """
         url = 'http://www.dsdev.tech/logs/' + self.log_date
+        return requests.get(url).text
+
+    def parse_json(self):
+        """ Метод для сохранения логов """
         try:
-            response = requests.get(url).text
+            response = self.load_json()
             logging.info(f'Получены логи за {self.log_date}')
         except Exception as e:
             logging.critical(f'Ошибка получения логов - {str(e)}')
             print(str(e))
-            return
         try:
             logs = json.loads(response)['logs']
             self.log = logs
