@@ -28,16 +28,17 @@ git clone https://github.com/tsibikov/graffit_test_task.git
 ```
 cd graffit_test_task
 ```
-- создать виртуальное окружение
+- создать виртуальное окружение и активировать его
 ```
 python3 -m venv venv
+source venv/bin/activate
 ```
 - установить зависимости
 ```
-pip3 -r requirements.txt
+pip3 install -r requirements.txt
 ```
 - создать базу данных
 ```
-python3 create_db
+python3 create_db.py
 ```
 
