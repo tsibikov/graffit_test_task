@@ -5,7 +5,7 @@ import os
 def create_db(db_name):
     """ Функция для создания Базы Даных. 
         Таблица - logs.
-        Поля - id, user_id, first_name, second_name, message, created_at """
+        Поля - user_id, first_name, second_name, message, created_at """
     cur_dir = os.getcwd()
     path_db = os.path.join(cur_dir, db_name)
     if not os.path.exists(path_db):
