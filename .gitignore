@@ -2,3 +2,5 @@ venv/
 *.sqlite3
 *.sqlite3-journal
 .env
+.idea
+__pycache__
