@@ -64,7 +64,7 @@ class DailyLog:
             conn = sqlite3.connect('db.sqlite3')
             cursor = conn.cursor()
             for item in self.log:
-                log_message = (item['user_id'], item['first_name'],
+                log_message = (int(item['user_id']), item['first_name'],
                                item['second_name'], item['message'],
                                item['created_at'])
                 cursor.execute("""INSERT INTO "logs" VALUES (?, ?, ?, ?, ?)""",
