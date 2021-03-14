@@ -13,7 +13,6 @@ def create_db(db_name):
             conn = sqlite3.connect(path_db)
             cursor = conn.cursor()
             cursor.execute("""CREATE TABLE "logs"(
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
                     user_id INTEGER,
                     first_name TEXT,
                     second_name TEXT,
