@@ -13,13 +13,12 @@ def create_db(db_name):
             conn = sqlite3.connect(path_db)
             cursor = conn.cursor()
             cursor.execute("""CREATE TABLE "logs"(
-                    user_id INTEGER,
-                    first_name TEXT,
-                    second_name TEXT,
-                    message TEXT,
-                    created_at TEXT
-                );
-            """)
+                user_id INTEGER,
+                first_name TEXT,
+                second_name TEXT,
+                message TEXT,
+                created_at TEXT
+            );""")
             conn.commit()
             return f'БД успешно создана'
         except sqlite3.Error as e:            

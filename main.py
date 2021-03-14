@@ -37,15 +37,23 @@ class DailyLog:
             logging.info(f'Получены логи за {self.log_date}')
         except Exception as e:
             logging.critical(f'Ошибка получения логов - {str(e)}')
-            return str(e)
+            print(str(e))
+            return
         try:
             logs = json.loads(response)['logs']
             self.log = logs
             logging.info(f'Логи сохранены')
-        except:
+        except Exception as e:
+            logging.critical(f'Ошибка сохранения логов - {str(e)}')
+            print(str(e))
+        try:
             error = json.loads(response)['error']
-            return error
-            logging.critical(f'Ошибка сохранения логов - {str(error)}')
+            if error != '':
+                logging.critical(f'Ошибка формата даты - {str(error)}')
+                print(error)
+        except Exception as e:
+            logging.critical(f'Ошибка - {str(e)}')
+            print(str(e))
 
     def load_to_db(self):
         """ Метод для записи логов в БД """
@@ -61,7 +69,7 @@ class DailyLog:
             conn.commit()
             conn.close()
         except sqlite3.Error as e:
-            return f'Ошибка записи в БД:  + {str(e)}'
+            print(f'Ошибка записи в БД:  + {str(e)}')
 
     def __merge(self, left, right):
         """ Метод для сортировки полученных логов """
