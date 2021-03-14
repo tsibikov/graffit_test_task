@@ -47,7 +47,6 @@ class DailyLog:
             return error
             logging.critical(f'Ошибка сохранения логов - {str(error)}')
 
-
     def load_to_db(self):
         """ Метод для записи логов в БД """
         try:
